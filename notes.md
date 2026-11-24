@@ -477,6 +477,8 @@ npx expo install react-native-gesture-handler @react-native-masked-view/masked-v
 npm install @react-navigation/bottom-tabs - bottom tab
 npx expo install @expo/vector-icons - for icons
 npx expo install @react-navigation/material-top-tabs - for top tab
+npm install @react-navigation/drawer - drawer navigation
+npx expo install react-native-gesture-handler react-native-reanimated react-native-worklets - include with drawer
 
 -> moving from one screen to another screen without using props then we use react navigation / navigation library
 -> expo router is built top of react navigation
