@@ -473,7 +473,9 @@ npx expo install react-native-screens react-native-safe-area-context
 npm install @react-navigation/elements
 npm install @react-navigation/native-stack - for stack navigation
 npm install @react-navigation/stack
- npx expo install react-native-gesture-handler @react-native-masked-view/masked-view - animation
+npx expo install react-native-gesture-handler @react-native-masked-view/masked-view - animation
+npm install @react-navigation/bottom-tabs - bottom tab
+npx expo install @expo/vector-icons - for icons
 
 -> moving from one screen to another screen without using props then we use react navigation / navigation library
 -> expo router is built top of react navigation
@@ -487,7 +489,69 @@ npm install @react-navigation/stack
 ## static vs dynamic navigation
 
 -> **Static**: screens are declared in one config object, we no need to load at run time, for small apps, consistent arc
+
+const Stack = createNativeStackNavigator({
+screens: {
+Home: HomeScreen,
+Details: {
+screen: DetailScreen,
+initialParams: {
+userId: 10,
+},
+options: {
+headerStyle: { backgroundColor: "rgb(34, 88, 153)" },
+},
+},
+Profile: ProfileScreen,
+},
+});
+
+const Navigation = createStaticNavigation(Stack);
+export default function StaticStackNavigator() {
+return <Navigation />;
+}
 -> **Dynamic**: component based configuration with significant more boilerplate for TS and deep linking
+const Stack = createNativeStackNavigator();
+
+function MyStack() {
+return (
+<Stack.Navigator
+screenOptions={{
+        headerStyle: {
+          backgroundColor: "rgb(8, 85, 137)",
+        },
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontWeight: "100",
+        },
+      }} >
+<Stack.Screen
+name="Home"
+component={HomeScreen}
+options={{
+          title: "Overview",
+          headerStyle: {
+            backgroundColor: "#07225c",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+/>
+<Stack.Screen name="Details" component={DetailScreen} />
+<Stack.Screen name="Profile" component={ProfileScreen} />
+</Stack.Navigator>
+);
+}
+
+export default function DynamicStackNavigator() {
+return (
+<NavigationContainer>
+<MyStack />
+</NavigationContainer>
+);
+}
 
 ## types of navigator
 
@@ -511,5 +575,5 @@ npm install @react-navigation/stack
    4. multi steps form
    5. Details
 
-2. tabs navigator
+2. tabs navigator - to show the main section
 3. drawer navigator
