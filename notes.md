@@ -381,3 +381,135 @@ export default ScreenDimension;
 **scale** generally refers to the device's pixel density ratio. Working with physical pixel dimensions, image resolution, and pixel conversions.
 
 -> useColorScheme
+
+import { StyleSheet, Switch, Text, useColorScheme, View } from "react-native";
+import React, { useState } from "react";
+
+const themes = {
+light: {
+Background: "#fff",
+card: "#f5f5f5",
+text: "#1a1a1a",
+subtext: "#666",
+accent: "#6c63ff",
+},
+dark: {
+Background: "#121212",
+card: "#1e1e1e",
+text: "#fff",
+subtext: "#aaa",
+accent: "#9d97ff",
+},
+};
+
+const ColorScheme = () => {
+const systemScheme = useColorScheme();
+const [manualDark, setManualDark] = useState<boolean | null>(null);
+const isDark = manualDark !== null ? manualDark : systemScheme === "dark";
+const theme = isDark ? themes.dark : themes.light;
+return (
+<View style={[styles.container, { backgroundColor: theme.Background }]}>
+{/_ Header _/}
+<View style={[styles.card, { backgroundColor: theme.card }]}>
+<Text style={[styles.title, { color: theme.text }]}>
+{isDark ? "🌙 Dark Mode" : "☀️ Light Mode"}
+</Text>
+<Text style={[styles.subtitle, { color: theme.subtext }]}>
+System preference: {systemScheme ?? "unknown"}
+</Text>
+</View>
+
+      {/* Toggle Row */}
+      <View style={[styles.card, { backgroundColor: theme.card }]}>
+        <View style={styles.row}>
+          <Text style={[styles.label, { color: theme.text }]}>
+            Override system theme
+          </Text>
+          <Switch
+            value={manualDark ?? systemScheme === "dark"}
+            onValueChange={setManualDark}
+            trackColor={{ false: "#ddd", true: theme.accent }}
+            thumbColor="white"
+          />
+        </View>
+      </View>
+
+      {/* Content Card */}
+      <View style={[styles.card, { backgroundColor: theme.card }]}>
+        <Text style={[styles.title, { color: theme.accent }]}>
+          Themed Card 🎨
+        </Text>
+        <Text style={[styles.subtitle, { color: theme.subtext }]}>
+          Colors adapt to dark/light mode automatically
+        </Text>
+      </View>
+    </View>
+
+);
+};
+
+export default ColorScheme;
+
+const styles = StyleSheet.create({
+container: { flex: 1, padding: 16, gap: 12 },
+card: { padding: 20, borderRadius: 16 },
+row: {
+flexDirection: "row",
+justifyContent: "space-between",
+alignItems: "center",
+},
+title: { fontSize: 20, fontWeight: "bold" },
+subtitle: { fontSize: 14, marginTop: 4 },
+label: { fontSize: 16 },
+});
+
+## react native navigation
+
+# command:
+
+npx create-expo-app@latest your-app-name -t blank-typescript :- to create react native app
+npm install @react-navigation/native
+npx expo install react-native-screens react-native-safe-area-context
+npm install @react-navigation/elements
+npm install @react-navigation/native-stack - for stack navigation
+npm install @react-navigation/stack
+ npx expo install react-native-gesture-handler @react-native-masked-view/masked-view - animation
+
+-> moving from one screen to another screen without using props then we use react navigation / navigation library
+-> expo router is built top of react navigation
+
+## what is navigator?
+
+1. which screen is shown
+2. how back works
+3. headers
+
+## static vs dynamic navigation
+
+-> **Static**: screens are declared in one config object, we no need to load at run time, for small apps, consistent arc
+-> **Dynamic**: component based configuration with significant more boilerplate for TS and deep linking
+
+## types of navigator
+
+1. stack navigator
+   -> to use stack navigation use Button or link from elements
+   navigate("") - Go to a screen by their name
+   goBack() - go to prev screen
+   push("") - Always adds a new instance
+   replace("") - replace current screen so user can't go to prev screen -> Splash
+   popTo(") - directly jump
+   popToTop() - go back to the first screen
+
+   # use cases:
+
+   -> you want screen-to-screen navigation
+   -> you need back button support
+   -> you want push/pop navigation flow
+   1. Authetication flow
+   2. E-commerce apps
+   3. Social media app
+   4. multi steps form
+   5. Details
+
+2. tabs navigator
+3. drawer navigator
