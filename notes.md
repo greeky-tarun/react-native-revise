@@ -476,6 +476,7 @@ npm install @react-navigation/stack
 npx expo install react-native-gesture-handler @react-native-masked-view/masked-view - animation
 npm install @react-navigation/bottom-tabs - bottom tab
 npx expo install @expo/vector-icons - for icons
+npx expo install @react-navigation/material-top-tabs - for top tab
 
 -> moving from one screen to another screen without using props then we use react navigation / navigation library
 -> expo router is built top of react navigation
@@ -576,4 +577,5 @@ return (
    5. Details
 
 2. tabs navigator - to show the main section
+
 3. drawer navigator
