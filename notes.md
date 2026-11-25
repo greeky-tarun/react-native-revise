@@ -479,6 +479,7 @@ npx expo install @expo/vector-icons - for icons
 npx expo install @react-navigation/material-top-tabs - for top tab
 npm install @react-navigation/drawer - drawer navigation
 npx expo install react-native-gesture-handler react-native-reanimated react-native-worklets - include with drawer
+npm run reset-project - to reset project
 
 -> moving from one screen to another screen without using props then we use react navigation / navigation library
 -> expo router is built top of react navigation
@@ -581,3 +582,39 @@ return (
 2. tabs navigator - to show the main section
 
 3. drawer navigator
+
+## Expo router 101
+
+-> expo router is built on top of react navigation
+-> it brings file based system -> source of truth for your app's navigation
+-> ex. index.tsx -> /
+about.tsx -> /about
+settings.tsx -> /settings
+
+if you make any of the tsx file in the app folder it will treate as route ex index.tsx, about.tsx, settings.tsx -> route
+if you make any file outside the app folder that will be treated as component not route segment
+
+if you make profile/index.tsx -> /profile
+profile/details.tsx -> profile/details
+profile.tsx -> profile
+
+these all called static route and nested static routes
+
+## Dynamic Route: a route that accept a var value
+
+[]: square bracket convention then write which basis you want to, for that we use useLocalSearchParams()
+ex: [userId].tsx:
+const userIdScreen = () => {
+const { userId } = useLocalSearchParams();
+return (
+<View>
+<Text>{userId}</Text>
+</View>
+);
+};
+export default userIdScreen;
+
+<Link href={"/123"}>useId Page</Link>
+// here 123 is user id
+
+for dynamic route use diffrent folder becaue to not get conflict: good practice
