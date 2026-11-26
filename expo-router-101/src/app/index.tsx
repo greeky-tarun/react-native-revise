@@ -5,7 +5,9 @@ import { Text, View, StyleSheet } from "react-native";
 export default function Index() {
   return (
     <View style={styles.container}>
-      <Home />
+      {/* <Home /> */}
+      <Text>Helo world</Text>
+      <Link href={"/about"}>About</Link>
     </View>
   );
 }

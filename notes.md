@@ -628,3 +628,5 @@ here []/[]/[].. - nested dynamic routes
 usecase: if you are making a document specific app
 
 # \_layout.tsx
+
+# slot: this will work as a placeholder
