@@ -9,6 +9,8 @@ const Home = () => {
       <Link href={"/profile/details"}>About</Link>
       <Link href={"/user/123"}>useId Page</Link>
       <Link href={"/username/tarun"}>username Page</Link>
+      <Link href={"/docs/expo-router/nested-dynamic-route"}>Go to Docs</Link>
+      <Link href={"/emp/suraj/8383"}>Go to emp</Link>
     </View>
   );
 };

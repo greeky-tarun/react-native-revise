@@ -618,3 +618,13 @@ export default userIdScreen;
 // here 123 is user id
 
 for dynamic route use diffrent folder becaue to not get conflict: good practice
+nested dynamic router - ex: docs - folder, [topicName] - nested folder, index.tsx - file, [subTopic].tsx - file
+docs/[topicName]/[subTopic].tsx
+/index.tsx
+here []/[]/[].. - nested dynamic routes
+
+# catch-all - [...slug] - you can put number of nested routes as per you want
+
+usecase: if you are making a document specific app
+
+# \_layout.tsx
