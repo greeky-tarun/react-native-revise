@@ -630,3 +630,9 @@ usecase: if you are making a document specific app
 # \_layout.tsx
 
 # slot: this will work as a placeholder
+
+# route groups
+
+-> () use this for the folder to hide your path
+-> \_layout.tsx: share the common layout between files
+-> this is better for organisational purpose and better developer experience
