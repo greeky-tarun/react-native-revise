@@ -645,4 +645,8 @@ if you are making a authetication and want to show some particular person to hom
 There are three types of tab
 -> JS tabs(default)
 -> native tabs
+
 -> custom tabs
+-> state: all available tabs, current tabs
+-> desc: screens options
+-> nav: move between screens/tabs
