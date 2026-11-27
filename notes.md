@@ -636,3 +636,13 @@ usecase: if you are making a document specific app
 -> () use this for the folder to hide your path
 -> \_layout.tsx: share the common layout between files
 -> this is better for organisational purpose and better developer experience
+
+if you are making a authetication and want to show some particular person to home and about who are logged in then dynamic route group can work
+\_layout.tsx with Stack.guard you can protect who can get access
+
+# Tabs
+
+There are three types of tab
+-> JS tabs(default)
+-> native tabs
+-> custom tabs

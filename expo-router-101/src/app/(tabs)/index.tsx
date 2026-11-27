@@ -8,7 +8,7 @@ export default function Index() {
       {/* <Home /> */}
       <Text>Helo world</Text>
       <Link href={"/about"}>About</Link>
-      <Link href={"/auth/login"}>Login</Link>
+      <Link href={"/login"}>Login</Link>
     </View>
   );
 }
